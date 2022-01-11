@@ -83,6 +83,8 @@ class Html2Text
   end
 
   def iterate_over(node)
+    return "" if node.name.nil? # example is weird dtds with no name attribute
+
     return "\n" if node.name.downcase == "br" && next_node_is_text?(node)
 
     return trimmed_whitespace(node.text) if node.text?
